@@ -5,49 +5,163 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Santhiya Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-                
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+      
+    <!-- < rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> -->
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<style>
+  
+  #dashboardVideo {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      cursor: pointer;
+    }
 
+    .tooltip {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .card-img:hover .tooltip {
+      opacity: 1;
+    }
+
+    .figma-frame {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    iframe {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+</style>
+<style>
+  
+/* Sidebar Fixed Full Height */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100vh;
+  background-color: #d3d3d3;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.sidebar a {
+  display: block;
+  padding: 15px 25px;
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.sidebar a:hover {
+  background-color: #c0c0c0;
+}
+
+/* Toggle Button */
+#toggleBtn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Media Query for Mobile View */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px; /* Adjust sidebar width */
+    padding-top: 50px; /* Adjust padding for mobile */
+  }
+
+  #toggleBtn {
+    top: 10px; /* Adjust button position for smaller screens */
+    left: 10px;
+    padding: 8px 12px;
+  }
+
+  /* Optional: Adjust the sidebar when it's visible on small screens */
+  .sidebar.open {
+    left: 0;
+  }
+}
+
+</style>
+  
+  
 </head>
 <body>
 
+  <header id="header" class="header d-flex flex-column justify-content-center">
 
-    <header>
+    <!-- <i class="header-toggle d-xl-none bi bi-list"></i> -->
+
         <!-- <a href="" class="brand" data-aos="zoom-in" data-aos-duration="1000">SANTHIYA</a> -->
-        <!-- <div class="navbar">
-        <div class="navbar-nav">
-            <a href="#main" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">Home</a>
-            <a href="#about"data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><i class="fas fa-user"></i></a>
-            <a href="#skills" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><i class="fas fa-code"></a>
-            <a href="#services" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><i class="fas fa-database"></i></a>
-            <a href="#work" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">Work</a>
-            <a href="#" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><i class="fas fa-envelope"></i></a>
-        </div>
-    </div> -->
-<!--         <nav class="navbar">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#main"><i class="fas fa-home"></i> <span>Home</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-user-tie"></i>
-                     <span>About</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#skills"><i class="fas fa-gamepad"></i>
-                    <span>Skills</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#services"><i class="fas fa-cogs"></i>
-                    <span>Services</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#work"><i class="fas fa-briefcase"></i>
+        <!-- <div class="navbar"> -->
+         <!-- Toggle Button -->
+<button id="toggleBtn"><i class="fas fa-bars"></i></button>
+<nav class="navbar" id="navbar">
+  <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="#main"><i class="fas fa-home"></i> <span>Home</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-user-tie"></i>
+           <span>About</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#skills"><i class="fas fa-gamepad"></i>
+          <span>Skills</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#services"><i class="fas fa-cogs"></i>
+          <span>Services</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#work"><i class="fas fa-briefcase"></i>
 
-                    <span>Experience</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-phone-alt"></i>
+          <span>Experience</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-phone-alt"></i>
 
-                    <span>Contact</span></a></li>
-            </ul>
-        </nav> -->
+          <span>Contact</span></a></li>
+  </ul>
+</nav>
+<!-- Sidebar -->
+ <!-- <nav class="navbar" id="navbar">
+  <ul class="navbar-nav">
+    <li class="nav-item"><a class="nav-link" href="#home"><i class="fas fa-home"></i> Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-user-tie"></i> About</a></li>
+    <li class="nav-item"><a class="nav-link" href="#skills"><i class="fas fa-gamepad"></i> Skills</a></li>
+    <li class="nav-item"><a class="nav-link" href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+    <li class="nav-item"><a class="nav-link" href="#work"><i class="fas fa-briefcase"></i> Work</a></li>
+    <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
+  </ul>
+</nav>  -->
+  
     </header>
 
     <section class="main" id="main">
@@ -72,8 +186,36 @@
 <!--  About Section -->
 
     <section class="about" id="about">
+      
         <div class="title reveal">
-            <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000">About me</h2>
+          <script src="https://unpkg.com/@motionone/dom"></script>
+          <script>
+            const { animate, path, stagger } = window.Motion;
+          
+            window.onload = function() {
+              // Animate car along the path
+              animate(".car", {
+                offsetDistance: ["0%", "100%"]
+              }, {
+                duration: 5,
+                easing: "linear",
+                repeat: Infinity,
+                offsetPath: path(".circuit")
+              });
+          
+              // Optional: animate drawing the path
+              animate(".circuit", {
+                strokeDasharray: 600,
+                strokeDashoffset: [600, 0]
+              }, {
+                duration: 2
+              });
+            };
+          </script>
+                  
+            <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000"><div class="medium row">
+              <div class="square"></div>
+            </div>About me</h2>
         </div>
         <div class="content">
             <div class="column col-left reveal">
@@ -278,7 +420,8 @@
         </div>
         <div class="content">
             <div class="card" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
-                <div class="card-img">
+                <div class="card-img"  onclick="redirectToDemo()">
+                  >
                     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                   
                     <lottie-player 
@@ -304,15 +447,21 @@
                 <h3>Admin Panel</h3>
               </div>
             </div>
-            <div class="card" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-              <div class="card-img">
-                <video id="dashboardVideo" autoplay loop muted playsinline width="100%">
-                 
+            <div class="card" data-aos="fade-left" onclick="showFigmaDemo()"data-aos-duration="1000" data-aos-delay="200">
+              <div class="card-img" >
+                <video id="dashboardVideo" autoplay loop muted playsinline>
                   <source src="animations/ecommerce.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
+                <div class="tooltip">Click to view website demo prototype</div>
               </div>
               
+              <div id="figmaContainer" class="figma-frame">
+                <iframe width="800" height="450"
+                  src="https://embed.figma.com/proto/nzD3st3eMBTm6uawlETGh9/Ecommerce-Website-Design--Community-?node-id=22-476&scaling=min-zoom&content-scaling=fixed&page-id=22%3A474&embed-host=share"
+                  allowfullscreen>
+                </iframe>
+              </div>
               
             </div>
             <div class="card" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">
@@ -431,6 +580,17 @@
       <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      const toggleBtn = document.getElementById('toggle-btn');
+      const navbar = document.getElementById('navbar');
+    
+      toggleBtn.addEventListener('click', () => {
+        navbar.classList.toggle('show');
+      });
+    </script>
+    
+    
+  
     <script>
       AOS.init({offset:0});
     </script>
@@ -580,6 +740,93 @@
   </script>
     <script src="typed.js/typed.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    
+      <script>
+  function showFigmaDemo() {
+    window.location.href = "figma-demo.html";
+  }
+</script>
+<script>
+  
+document.querySelectorAll('#navmenu a').forEach(navmenu => {
+  navmenu.addEventListener('click', () => {
+    if (document.querySelector('.header-show')) {
+      headerToggle();
+    }
+  });
 
+});
+
+/**
+ * Toggle mobile nav dropdowns
+ */
+document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
+  navmenu.addEventListener('click', function (e) {
+    e.preventDefault();
+    this.parentNode.classList.toggle('active');
+    this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+    e.stopImmediatePropagation();
+  });
+});
+let navmenulinks = document.querySelectorAll('.navmenu a');
+
+function navmenuScrollspy() {
+  navmenulinks.forEach(navmenulink => {
+    if (!navmenulink.hash) return;
+    let section = document.querySelector(navmenulink.hash);
+    if (!section) return;
+    let position = window.scrollY + 200;
+    if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+      document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
+      navmenulink.classList.add('active');
+    } else {
+      navmenulink.classList.remove('active');
+    }
+  })
+}
+window.addEventListener('load', navmenuScrollspy);
+document.addEventListener('scroll', navmenuScrollspy);
+
+const headerToggleBtn = document.querySelector('.header-toggle');
+
+function headerToggle() {
+  document.querySelector('#header').classList.toggle('header-show');
+  headerToggleBtn.classList.toggle('bi-list');
+  headerToggleBtn.classList.toggle('bi-x');
+}
+headerToggleBtn.addEventListener('click', headerToggle);
+
+/**
+ * Hide mobile nav on same-page/hash links
+ */
+document.querySelectorAll('#navmenu a').forEach(navmenu => {
+  navmenu.addEventListener('click', () => {
+    if (document.querySelector('.header-show')) {
+      headerToggle();
+    }
+  });
+  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
+    navmenu.addEventListener('click', function (e) {
+      e.preventDefault();
+      this.parentNode.classList.toggle('active');
+      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+      e.stopImmediatePropagation();
+    });
+  });
+
+});
+
+
+    </script>
+   <script>
+    const toggleBtns = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('navbar');
+  
+    toggleBtns.addEventListener('click', () => {
+      sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
+    });
+  </script>
+  
+    
 </body>
 </html>
