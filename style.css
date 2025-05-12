@@ -1022,9 +1022,9 @@ section{
     transition: opacity 0.4s ease;
 }
 
-.card:hover .service-icon {
-    /* opacity: 0; */
-}
+/* .card:hover .service-icon {
+   opacity: 0; 
+} */
 
 .info p {
     max-height: 0;
@@ -1044,86 +1044,271 @@ section{
     display: block;
     border-radius: 10px; /* optional */
   }
- /* General styles */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Info Button */
+  /* Info button (fixed at top-right) */
   #toggle-btn {
     position: fixed;
     top: 20px;
     right: 20px;
-    font-size: 24px;
-    background: #333;
+    background-color: #333;
     color: #fff;
     padding: 10px;
     border-radius: 50%;
+    font-size: 20px;
     cursor: pointer;
-    z-index: 1001;
-    display: none; /* hidden by default */
+    z-index: 999;
   }
-  
-  /* Sidebar Navigation */
-  .navbar {
+
+  /* Sidebar (hidden by default) */
+  /* .navbar {
     position: fixed;
     right: 0;
     top: 0;
+    height: 100vh;
     width: 220px;
-    height: 100%;
     background-color: #222;
-    color: white;
+    color: #fff;
     padding-top: 60px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    z-index: 1000;
-  }
-  
+    display: none; 
+    z-index: 998;
+  } */
+/* 
   .navbar.show {
-    transform: translateX(0);
+    display: block; 
   }
-  
+
   .navbar-nav {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  
+
   .nav-item {
     padding: 15px;
     border-bottom: 1px solid #444;
   }
-  
+
   .nav-link {
     color: white;
     text-decoration: none;
     display: block;
   }
-  
-  /* Show toggle button only on mobile */
+
+  .nav-link i {
+    margin-right: 10px;
+  }
+
+  /* Mobile view: show toggle button, sidebar hidden by default */
   @media (max-width: 768px) {
-    #toggle-btn {
-      display: block;
-    }
-  
     .navbar {
-      transform: translateX(100%);
+      display: none; /* Sidebar hidden by default */
     }
-  
+
     .navbar.show {
-      transform: translateX(0);
+      display: block; /* Sidebar visible when button clicked */
     }
+  } */
+
+  /* Desktop view: always show sidebar */
+  /* @media (min-width: 769px) {
+    .navbar {
+      display: block !important;
+    }
+
+    #toggle-btn {
+      display: none; 
+    }
+  }  */
+  .square {
+    width: 50px;
+    height: 50px;
+    /* background-color: red; */
+    position: absolute;
+  }
+  .car {
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    position: absolute;
+  }
+
+  svg {
+    width: 100%;
+    height: 300px;
+  }
+
+
+  /* nav */
+  .navmenu {
+    padding: 0;
+    z-index: 9997;
   }
   
-  /* Always show sidebar on desktop */
-  @media (min-width: 769px) {
-    .navbar {
-      transform: translateX(0) !important;
+  .navmenu ul {
+    list-style: none;
+    padding: 0 0 20px 0;
+    margin: 0;
+    width: 140px;
+  }
+  
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-color);
+    font-family: var(--nav-font);
+    display: flex;
+    align-items: center;
+    padding: 10px 18px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    border-radius: 50px;
+    background: color-mix(in srgb, var(--default-color), transparent 92%);
+    height: 56px;
+    width: 100%;
+    overflow: hidden;
+    transition: 0.3s;
+  }
+  
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 20px;
+  }
+  
+  .navmenu a span,
+  .navmenu a:focus span {
+    padding: 0 5px 0 7px;
+  }
+  
+  @media (min-width: 992px) {
+  
+    .navmenu a,
+    .navmenu a:focus {
+      max-width: 56px;
     }
   
-    #toggle-btn {
+    .navmenu a span,
+    .navmenu a:focus span {
       display: none;
     }
   }
   
+  .navmenu a:hover,
+  .navmenu .active,
+  .navmenu .active:focus,
+  .navmenu li:hover>a {
+    color: var(--contrast-color);
+    background: var(--nav-hover-color);
+  }
+  
+  .navmenu a:hover,
+  .navmenu li:hover>a {
+    max-width: 100%;
+    color: var(--contrast-color);
+  }
+  
+  .navmenu a:hover span,
+  .navmenu li:hover>a span {
+    display: block;
+  }
+  :root {
+    --nav-color: #45505b;
+    /* The default color of the main navmenu links */
+    --nav-hover-color: #00060c;
+    /* Applied to main navmenu links when they are hovered over or active */
+    --nav-mobile-background-color: #ffffff;
+    /* Used as the background color for mobile navigation menu */
+    --nav-dropdown-background-color: #ffffff;
+    /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+    --nav-dropdown-color: #212529;
+    /* Used for navigation links of the dropdown items in the navigation menu. */
+    --nav-dropdown-hover-color: #0563bb;
+    /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  }  
+  .header.header-show {
+    left: 0;
+  }
+  
+  .header .header-toggle {
+    color: var(--contrast-color);
+    background-color: var(--accent-color);
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 9999;
+    transition: background-color 0.3s;
+  }
+  
+  .header .header-toggle:hover {
+    color: var(--contrast-color);
+    background-color: color-mix(in srgb, var(--accent-color) 90%, white 15%);
+  }
+
+  .tech-stack-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .tech-stack-list {
+    color: white;
+    font-size: 19px;
+    padding-left: 20px;
+    list-style: disc;
+    column-count: 2;
+    column-gap: 60px;
+    text-align: left;
+  }
+
+  @media screen and (max-width: 768px) {
+    .tech-stack-list {
+      column-count: 1;
+    }
+  }
+
+
+#dashboardVideo {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card-img:hover .tooltip {
+  opacity: 1;
+}
+
+.figma-frame {
+  display: none;
+  margin-top: 20px;
+  text-align: center;
+}
+
+iframe {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+.two-column-list {
+color: white;
+column-count: 2;
+column-gap: 40px;
+}
+
