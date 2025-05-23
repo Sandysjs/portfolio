@@ -5,5 +5,4 @@ A fully responsive and modern portfolio website built with only HTML and CSS. Pe
 🔗 [Live Demo]: https://www.procoder09.com/yt-Projects/portfolio-projects/Complete-Adam-Portfolio/
 🔗 [Download ]:
 	Hello Everyone ! I'M SHARAN.
-hey!...............
-hello
+this is my portfolio.
