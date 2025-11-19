@@ -123,7 +123,7 @@
   position: absolute;
   left: -22px;
   top: 32px;
-  width: 70px;
+  width: 51px;
   height: 40px;
 
   /* curved connector using border radius */
@@ -318,6 +318,8 @@
       <li class="nav-item"><a class="nav-link" href="#main"><i class="fas fa-home"></i> <span>Home</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-user-tie"></i>
            <span>About</span></a></li>
+             <li class="nav-item"><a class="nav-link" href="#resume"><i class="fa-regular fa-file"></i>
+          <span>Resume</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#skills"><i class="fas fa-gamepad"></i>
           <span>Skills</span></a></li>
       <li class="nav-item"><a class="nav-link" href="#services"><i class="fas fa-cogs"></i>
@@ -333,8 +335,13 @@
 
   
     </header>
+<div id="mainContent">
+  
 
     <section class="main" id="main">
+    <div id="gameIcon">
+    🎮
+</div>
         <div class="container" data-aos="zoom-in">
      
             <div class="name-rays"></div>
@@ -508,7 +515,7 @@
 
     </section>
    <!-- for resume section -->
-    <section class="skills" id="skills">
+    <section class="resume" id="resume">
        <div class="title">
         <h2 class="section-title  gold-heading" data-aos="fade-up" data-aos-duration="1000">  <span class="gold-spark gold-3d"></span>Resume</h2>
     </div>
@@ -645,11 +652,13 @@
                     <li  data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><strong><i class="fas fa-mobile-alt" style="margin:5px;"></i>Android Umpire Tool:</strong> Developed a live badminton scoring app in Unity with tracking and decision support.</li>
                     <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><strong><i class="fas fa-globe" style="margin:5px;"></i>Financial Web App:</strong> Responsive UI using HTML, CSS, JS, Bootstrap + fast CodeIgniter 3 & MySQL backend.</li>
                     <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><strong><i class="fas fa-tools" style="margin:5px;"></i>Admin Panels:</strong> Delivered data-driven dashboards with JSON, MySQL & CodeIgniter for smooth data visualization.</li>
+              
+                <!-- <a href="assets/Santhiya_CV.pdf"style="color:black;" class="btn" download data-aos="zoom-out-left" data-aos-duration="1000" data-aos-delay="600">
+                <i class="fas fa-download"></i> Download CV
+              </a> -->
                 </ul>
             </div>
-            <a href="assets/Santhiya_CV.pdf" class="btn" download data-aos="zoom-out-left" data-aos-duration="1000" data-aos-delay="600">
-                <i class="fas fa-download"></i> Download CV
-              </a>
+            
         </div>
 
         <div class="column col-left">
@@ -737,7 +746,7 @@
             <div class="card" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">
                 <div class="service-icon">
                     <!-- <i class="fas fa-palette"></i> -->
-                    <i  style="margin:5px;color:#ffca7a"class="fa-brands fa-java"></i>
+                    <i  style="margin:5px;color:#ffca7a"class="fa-brands fa-java glow-icon" ></i>
                 </div>
                 <div class="info">
                     <h3>Java + SpringBoot Expertise</h3>
@@ -753,7 +762,7 @@
                 <div class="service-icon">
                     <!-- <i class="fas fa-object-group"></i>
                       -->
-                      <i class="fa-solid fa-database"style="color:#ffca7a"></i>
+                      <i class="fa-solid fa-database glow-icon"style="color:#ffca7a"></i>
                 </div>
                 <div class="info">
                     <h3>BackEnd Development</h3>
@@ -766,7 +775,7 @@
             <div class="card" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
                 <div class="service-icon">
                     <!-- <i class="fas fa-file-code"></i> -->
-                    <i class="fa-solid fa-code"style="color:#ffca7a"></i>
+                    <i class="fa-solid fa-code glow-icon"style="color:#ffca7a"></i>
                 </div>
                 <div class="info">
                     <h3>Web Development</h3>
@@ -934,7 +943,14 @@
           </div>
         </div>
       </section>
-  
+ 
+</div>
+    
+  <div class="gamescreen" id="gameScreen">
+    <canvas id="gameCanvas"></canvas>
+    <button id="exitGame">Exit</button>
+</div>
+ 
       <footer class="footer">
         <span class="footer-title"style="font-size:30px;"> Santhiya S</span>
         <div class="social-links">
@@ -1219,8 +1235,519 @@ toggleBtns.addEventListener('click', () => {
     btn.textContent = resumeSection.style.display === "block" ? "Hide" : "See more";
   });
 </script>
+<script>
+window.addEventListener("scroll", function () {
+    let sections = document.querySelectorAll("section");
+    let navLinks = document.querySelectorAll(".nav-item");
 
-  
-    
+    let scrollY = window.scrollY;
+
+    sections.forEach(sec => {
+        if (scrollY >= sec.offsetTop - 150 && scrollY < sec.offsetTop + sec.offsetHeight) {
+            navLinks.forEach(link => link.classList.remove("active"));
+
+            let id = sec.getAttribute("id");
+            document.querySelector(`a[href="#${id}"]`).parentElement.classList.add("active");
+        }
+    });
+});
+</script>
+
+
+<script>
+document.addEventListener("mousemove", function(e) {
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("sparkle");
+    sparkle.style.left = e.pageX + "px";
+    sparkle.style.top = e.pageY + "px";
+
+    document.getElementById("sparkle-container").appendChild(sparkle);
+
+    setTimeout(() => {
+        sparkle.remove();
+    }, 800);
+});
+</script>
+
+<script>
+document.addEventListener("mousemove", (e) => {
+  const dot = document.createElement("div");
+  dot.classList.add("cursor-particle");
+  dot.style.left = e.clientX + "px";
+  dot.style.top = e.clientY + "px";
+  dot.style.width = "8px";
+  dot.style.height = "8px";
+  dot.style.borderRadius = "50%";
+  dot.style.background = "#ffd67c";
+  dot.style.boxShadow = "0 0 15px #ffca7a";
+  dot.style.opacity = "1";
+  dot.style.transition = "opacity 0.6s linear, transform 0.6s linear";
+
+  document.getElementById("cursor-effects-layer").appendChild(dot);
+
+  requestAnimationFrame(() => {
+    dot.style.opacity = "0";
+    dot.style.transform = "translate(-50%, -50%) scale(0)";
+  });
+
+  setTimeout(() => dot.remove(), 600);
+});
+</script>
+<script>
+const layer = document.getElementById("cursor-effects-layer");
+
+/* ------------------------------
+   ✨ Comet Trail + Pixel Dust 
+--------------------------------*/
+document.addEventListener("mousemove", (e) => {
+  for (let i = 0; i < 3; i++) {
+    const dust = document.createElement("div");
+    dust.classList.add("particle");
+
+    dust.style.left = e.clientX + "px";
+    dust.style.top = e.clientY + "px";
+    dust.style.width = "6px";
+    dust.style.height = "6px";
+    dust.style.background = "#ffca7a";
+    dust.style.boxShadow = "0 0 10px #ffca7a";
+    dust.style.opacity = "1";
+    dust.style.transition = "transform 0.5s linear, opacity 0.5s linear";
+
+    layer.appendChild(dust);
+
+    // Animation
+    requestAnimationFrame(() => {
+      dust.style.transform =
+        `translate(${(Math.random() - 0.5) * 40}px, ${(Math.random() - 0.5) * 40}px) scale(0)`;
+      dust.style.opacity = "0";
+    });
+
+    setTimeout(() => dust.remove(), 500);
+  }
+});
+
+/* ------------------------------
+   ✨ Neon Laser Line
+--------------------------------*/
+let lastX = 0, lastY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  const laser = document.createElement("div");
+  laser.classList.add("particle");
+
+  const dx = e.clientX - lastX;
+  const dy = e.clientY - lastY;
+  const distance = Math.sqrt(dx * dx + dy * dy);
+
+  laser.style.left = e.clientX + "px";
+  laser.style.top = e.clientY + "px";
+  laser.style.width = "2px";
+  laser.style.height = distance + "px";
+  laser.style.background = "linear-gradient(#ffcc88, transparent)";
+  laser.style.transform =
+    `translate(-50%, -100%) rotate(${Math.atan2(dy, dx) + Math.PI / 2}rad)`;
+  laser.style.opacity = "1";
+  laser.style.transition = "opacity 0.5s linear";
+
+  layer.appendChild(laser);
+
+  requestAnimationFrame(() => {
+    laser.style.opacity = "0";
+  });
+
+  setTimeout(() => laser.remove(), 500);
+
+  lastX = e.clientX;
+  lastY = e.clientY;
+});
+
+/* ------------------------------
+   ✨ Starburst Explosion on Click
+--------------------------------*/
+document.addEventListener("click", (e) => {
+  for (let i = 0; i < 16; i++) {
+    const spark = document.createElement("div");
+    spark.classList.add("particle");
+
+    spark.style.left = e.clientX + "px";
+    spark.style.top = e.clientY + "px";
+    spark.style.width = "6px";
+    spark.style.height = "6px";
+    spark.style.background = "#ffdd99";
+    spark.style.boxShadow = "0 0 12px #ffdd99";
+    spark.style.opacity = "1";
+    spark.style.transition = "transform 0.8s ease-out, opacity 0.8s";
+
+    layer.appendChild(spark);
+
+    // Spread outward
+    const angle = (Math.PI * 2 * i) / 16;
+    const spread = 120;
+
+    requestAnimationFrame(() => {
+      spark.style.transform =
+        `translate(${Math.cos(angle) * spread}px, ${Math.sin(angle) * spread}px) scale(0)`;
+      spark.style.opacity = "0";
+    });
+
+    setTimeout(() => spark.remove(), 800);
+  }
+});
+
+/* ------------------------------
+   ✨ Ambient 3D Floating Particles
+--------------------------------*/
+function createFloatingParticles() {
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement("div");
+    p.classList.add("floating-particle");
+
+    const size = Math.random() * 6 + 4;
+
+    p.style.width = size + "px";
+    p.style.height = size + "px";
+    p.style.left = Math.random() * window.innerWidth + "px";
+    p.style.top = Math.random() * window.innerHeight + "px";
+    p.style.animationDuration = 4 + Math.random() * 4 + "s";
+
+    document.body.appendChild(p);
+  }
+}
+
+createFloatingParticles();
+</script>
+<script>
+document.addEventListener("click", (e) => {
+    const layer = document.getElementById("cursor-effects-layer");
+
+    for (let i = 0; i < 40; i++) {
+        const gold = document.createElement("div");
+        gold.classList.add("gold-split");
+
+        gold.style.left = e.clientX + "px";
+        gold.style.top = e.clientY + "px";
+
+        // Random size for realism
+        const size = Math.random() * 6 + 3;
+        gold.style.width = size + "px";
+        gold.style.height = size + "px";
+
+        layer.appendChild(gold);
+
+        // Split direction
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 100 + Math.random() * 150;
+
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+
+        // Animation
+        requestAnimationFrame(() => {
+            gold.style.transform = `translate(${tx}px, ${ty}px) scale(0) rotate(${Math.random()*360}deg)`;
+            gold.style.opacity = "0";
+        });
+
+        setTimeout(() => gold.remove(), 900);
+    }
+});
+</script>
+<script>
+document.addEventListener("click", (e) => {
+    const layer = document.getElementById("cursor-effects-layer");
+
+    /* ------------------ ⚡ LIGHTNING BURST ------------------ */
+    for (let i = 0; i < 10; i++) {
+        const bolt = document.createElement("div");
+        bolt.classList.add("lightning");
+        bolt.style.left = e.clientX + "px";
+        bolt.style.top = e.clientY + "px";
+        bolt.style.setProperty("--angle", Math.random() * 360 + "deg");
+        layer.appendChild(bolt);
+
+        const dist = 60 + Math.random() * 80;
+        requestAnimationFrame(() => {
+            bolt.style.transform = `translate(-50%,-50%) 
+                                    rotate(${Math.random()*360}deg) 
+                                    translate(${dist}px)`;
+            bolt.style.opacity = "0";
+        });
+        setTimeout(() => bolt.remove(), 400);
+    }
+
+    /* ------------------ 🌊 SHOCKWAVE ------------------ */
+    const wave = document.createElement("div");
+    wave.classList.add("shockwave");
+    wave.style.left = e.clientX + "px";
+    wave.style.top = e.clientY + "px";
+    layer.appendChild(wave);
+
+    requestAnimationFrame(() => {
+        wave.style.transform = "translate(-50%, -50%) scale(12)";
+        wave.style.opacity = "0";
+    });
+    setTimeout(() => wave.remove(), 800);
+
+    /* ------------------ ⭐ STAR SPLIT ------------------ */
+    for (let i = 0; i < 12; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        star.style.left = e.clientX + "px";
+        star.style.top = e.clientY + "px";
+        layer.appendChild(star);
+
+        const angle = Math.random() * 360;
+        const dist = 80 + Math.random() * 150;
+        const tx = Math.cos(angle) * dist;
+        const ty = Math.sin(angle) * dist;
+
+        requestAnimationFrame(() => {
+            star.style.transform = `translate(${tx}px, ${ty}px) scale(0.3)`;
+            star.style.opacity = "0";
+        });
+        setTimeout(() => star.remove(), 900);
+    }
+
+    /* ------------------ 🏹 COMET STREAKS ------------------ */
+    for (let i = 0; i < 8; i++) {
+        const comet = document.createElement("div");
+        comet.classList.add("comet");
+        comet.style.left = e.clientX + "px";
+        comet.style.top = e.clientY + "px";
+        layer.appendChild(comet);
+
+        const angle = Math.random() * 360;
+        const dist = 200 + Math.random() * 200;
+        const tx = Math.cos(angle) * dist;
+        const ty = Math.sin(angle) * dist;
+
+        requestAnimationFrame(() => {
+            comet.style.transform = `rotate(${angle}deg) translate(${tx}px, ${ty}px)`;
+            comet.style.opacity = "0";
+        });
+
+        setTimeout(() => comet.remove(), 1000);
+    }
+
+});
+</script>
+<script>
+
+const gameIcon = document.getElementById("gameIcon");
+const mainContent = document.getElementById("mainContent");
+const gameScreen = document.getElementById("gameScreen");
+const exitGame = document.getElementById("exitGame");
+
+gameIcon.addEventListener("click", () => {
+    mainContent.style.display = "none";
+    gameScreen.style.display = "flex";
+});
+
+exitGame.addEventListener("click", () => {
+    gameScreen.style.display = "none";
+    mainContent.style.display = "block";
+});
+
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let player = {
+    x: canvas.width / 2,
+    y: canvas.height - 120,
+    w: 60,
+    h: 60
+};
+
+let bullets = [];
+let enemies = [];
+let score = 0;
+let gameRunning = false;
+
+// Load aircraft image
+let playerImg = new Image();
+playerImg.src = "https://i.postimg.cc/c4jF6WJ9/gold-jet.png";
+
+// Enemy image
+let enemyImg = new Image();
+enemyImg.src = "https://i.postimg.cc/Y0KQ4Kbt/enemy.png";
+
+function startGame() {
+    gameRunning = true;
+    bullets = [];
+    enemies = [];
+    score = 0;
+    animate();
+}
+
+// ✨ FIXED — Draw player correctly
+function drawPlayer() {
+    ctx.save();
+    ctx.shadowColor = "gold";
+    ctx.shadowBlur = 25;
+    ctx.drawImage(playerImg, player.x, player.y, player.w, player.h);
+    ctx.restore();
+}
+
+function animate() {
+    if (!gameRunning) return;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw player (FIXED)
+    drawPlayer();
+
+    // Bullets
+    bullets.forEach((b, i) => {
+        b.y -= 10;
+        ctx.fillStyle = "yellow";
+        ctx.fillRect(b.x, b.y, 4, 12);
+
+        if (b.y < 0) bullets.splice(i, 1);
+    });
+
+    // Create enemies
+    if (Math.random() < 0.03) {
+        enemies.push({
+            x: Math.random() * (canvas.width - 50),
+            y: -60,
+            w: 50,
+            h: 50
+        });
+    }
+
+    // Move enemies
+    enemies.forEach((e, i) => {
+        e.y += 3;
+        ctx.drawImage(enemyImg, e.x, e.y, e.w, e.h);
+
+        if (e.y > canvas.height) enemies.splice(i, 1);
+
+        // Collision
+        bullets.forEach((b, j) => {
+            if (
+                b.x < e.x + e.w &&
+                b.x + 4 > e.x &&
+                b.y < e.y + e.h
+            ) {
+                enemies.splice(i, 1);
+                bullets.splice(j, 1);
+                score++;
+            }
+        });
+    });
+
+    // Score
+    ctx.fillStyle = "white";
+    ctx.font = "24px Arial";
+    ctx.fillText(`Score: ${score}`, 20, 40);
+
+    requestAnimationFrame(animate);
+}
+
+// Move player
+canvas.addEventListener("mousemove", (e) => {
+    player.x = e.clientX - player.w / 2;
+});
+
+// Auto fire
+setInterval(() => {
+    if (gameRunning) {
+        bullets.push({
+            x: player.x + player.w / 2,
+            y: player.y
+        });
+    }
+}, 200);
+let particles = [];
+
+for (let i = 0; i < 80; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 3 + 1,
+        speedX: (Math.random() - 0.5) * 0.4,
+        speedY: (Math.random() - 0.5) * 0.4,
+        alpha: Math.random()
+    });
+}
+
+function drawParticles() {
+    particles.forEach(p => {
+        // Move
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        // Wrap around
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        // Golden glow
+        let gradient = ctx.createRadialGradient(
+            p.x, p.y, 0,
+            p.x, p.y, p.size * 4
+        );
+        gradient.addColorStop(0, `rgba(255,220,120, ${p.alpha})`);
+        gradient.addColorStop(1, "rgba(255,180,0, 0)");
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2);
+        ctx.fill();
+    });
+}
+// Start game
+gameIcon.addEventListener("click", () => {
+    mainContent.style.display = "none";
+    gameScreen.style.display = "flex";
+    startGame();
+});
+
+exitGame.addEventListener("click", () => {
+    gameRunning = false;
+    gameScreen.style.display = "none";
+    mainContent.style.display = "block";
+});
+
+function drawBullets() {
+    ctx.fillStyle = "yellow";
+    bullets.forEach((b, i) => {
+        b.y -= b.speed;
+        ctx.fillRect(b.x, b.y, b.width, b.height);
+        if (b.y < 0) bullets.splice(i, 1);
+    });
+}
+
+function drawEnemies() {
+    ctx.fillStyle = "red";
+    enemies.forEach((e, i) => {
+        e.y += e.speed;
+        ctx.fillRect(e.x, e.y, e.width, e.height);
+        if (e.y > canvas.height) enemies.splice(i, 1);
+    });
+}
+function gameLoop() {
+    if (!gameRunning) return;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    drawParticles();   // 🌟 BACKGROUND GOLD PARTICLES
+    drawPlayer();
+    drawBullets();
+    drawEnemies();
+    checkCollision();
+
+    requestAnimationFrame(gameLoop);
+}
+
+</script>
+
+
+<div id="sparkle-container"></div>
+ <div id="cursor-effects-layer"></div>
+
 </body>
 </html>
