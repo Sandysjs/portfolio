@@ -3,54 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sharan Portfolio</title>
+    <title>Santhiya Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-               
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+      
+    <!-- < rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> -->
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<style>
+  
+  #dashboardVideo {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      cursor: pointer;
+    }
 
+    .tooltip {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .card-img:hover .tooltip {
+      opacity: 1;
+    }
+
+    .figma-frame {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    iframe {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+</style>
+<style>
+  
+/* Sidebar Fixed Full Height */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100vh;
+  background-color: #d3d3d3;
+  padding-top: 60px;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.sidebar a {
+  display: block;
+  padding: 15px 25px;
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.sidebar a:hover {
+  background-color: #c0c0c0;
+}
+
+/* Toggle Button */
+#toggleBtn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Media Query for Mobile View */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px; /* Adjust sidebar width */
+    padding-top: 50px; /* Adjust padding for mobile */
+  }
+
+  #toggleBtn {
+    top: 10px; /* Adjust button position for smaller screens */
+    left: 10px;
+    padding: 8px 12px;
+  }
+
+  /* Optional: Adjust the sidebar when it's visible on small screens */
+  .sidebar.open {
+    left: 0;
+  }
+}
+/* for resume */
+.connector {
+  position: absolute;
+  left: -22px;
+  top: 32px;
+  width: 70px;
+  height: 40px;
+
+  /* curved connector using border radius */
+  border: 2px solid #ffca7a;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 40px 0 0 0;
+
+  opacity: 0.8;
+  animation: connectorCurve 1.2s ease forwards;
+  z-index: 2;
+}
+
+/* connector curve animation */
+@keyframes connectorCurve {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateX(-10px);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1) translateX(0);
+  }
+}
+
+.glow-intersection {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #ffca7a;
+  border-radius: 50%;
+  left: 110px; /* adjust to match your layout */
+  top: 32px;
+  box-shadow: 0 0 12px #ffca7a, 0 0 40px rgba(255, 202, 122, 0.9);
+  animation: glowPulse 2s infinite ease-in-out;
+  z-index: 4;
+}
+
+@keyframes glowPulse {
+  0%   { transform: scale(0.8); opacity: 0.8; }
+  50%  { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.8); opacity: 0.8; }
+}
+
+@keyframes connectorIn {
+  0% { width: 0; opacity: 0; }
+  100% { width: 60px; opacity: 1; }
+}
+
+.curved-container {
+  display: grid;
+  grid-template-columns: 1fr 150px 1fr;
+  gap: 20px;
+  width: 90%;
+  max-width: 1300px;
+  margin: auto;
+  padding: 20px 0;
+  position: relative;
+}
+
+/* --- COLUMNS --- */
+.curved-column {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+/* --- CARD UI --- */
+.curved-card {
+  background: rgba(255,255,255,0.08);
+  padding: 22px 28px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  position: relative;
+  color: #f8f3f3;
+  animation: fadeUp 0.8s ease;
+}
+
+.curved-card h3 {
+  color: #ffca7a;
+  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.curved-card ul li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* --- DOTS (FIXED + ANIMATED GLOW) --- */
+.dot {
+  position: absolute;
+  left: -22px;
+  top: 25px;
+  width: 16px;
+  height: 16px;
+  background: #ffca7a;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #ffca7a, 0 0 30px rgba(255,202,122,0.6);
+  animation: pulseGlow 2s infinite ease-in-out;
+  z-index: 3;
+}
+
+/* --- CURVED LINE SVG STYLING --- */
+.curved-svg {
+  height: 100%;
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* Makes the curve visually blended with dots */
+
+.curved-svg path {
+  stroke: url(#gradLine);
+  stroke-width: 4;
+  filter: drop-shadow(0 0 6px #ffca7a);
+
+  stroke-dasharray: 1800;
+  stroke-dashoffset: 1800;
+
+  animation:
+    drawLine 1s ease forwards,
+    shimmer 5s infinite linear,
+    floatLine 2s ease-in-out infinite;
+}
+
+/* curve floating motion */
+@keyframes floatLine {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(6px); }
+  100% { transform: translateY(0px); }
+}
+/* --- KEYFRAME ANIMATIONS --- */
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 12px #ffca7a, 0 0 25px rgba(255,202,122,0.4); }
+  50% { box-shadow: 0 0 20px #ffca7a, 0 0 40px rgba(255,202,122,0.9); }
+  100% { box-shadow: 0 0 12px #ffca7a, 0 0 25px rgba(255,202,122,0.4); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE --- */
+@media(max-width: 1100px) {
+  .curved-container {
+    grid-template-columns: 1fr;
+  }
+  .curved-svg { display: none; }
+  .dot { left: 0; }
+}
+
+@keyframes shimmer {
+  0% {
+    stroke-dashoffset: 1800;
+  }
+  100% {
+    stroke-dashoffset: -1800;
+  }
+}
+
+
+
+</style>
+  
+  
 </head>
 <body>
 
+  <header id="header" class="header d-flex flex-column justify-content-center">
 
-    <header>
-   
-        <nav class="navbar">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#main"><i class="fas fa-home"></i> <span>Home</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-user-tie"></i>
-                     <span>About</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#skills"><i class="fas fa-gamepad"></i>
-                    <span>Skills</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#services"><i class="fas fa-cogs"></i>
-                    <span>Services</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#work"><i class="fas fa-briefcase"></i>
+    <!-- <i class="header-toggle d-xl-none bi bi-list"></i> -->
 
-                    <span>Experience</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-phone-alt"></i>
+        <!-- <a href="" class="brand" data-aos="zoom-in" data-aos-duration="1000">SANTHIYA</a> -->
+        <!-- <div class="navbar"> -->
+         <!-- Toggle Button -->
+<!-- <button id="toggleBtn"><i class="fas fa-bars"></i></button> -->
+<nav class="navbar" id="navbar">
+  <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="#main"><i class="fas fa-home"></i> <span>Home</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-user-tie"></i>
+           <span>About</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#skills"><i class="fas fa-gamepad"></i>
+          <span>Skills</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#services"><i class="fas fa-cogs"></i>
+          <span>Services</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#work"><i class="fas fa-briefcase"></i>
 
-                    <span>Contact</span></a></li>
-            </ul>
-        </nav>
+          <span>Experience</span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-phone-alt"></i>
+
+          <span>Contact</span></a></li>
+  </ul>
+</nav>
+
+  
     </header>
 
     <section class="main" id="main">
         <div class="container" data-aos="zoom-in">
             <div class="row justify-content-center">
               <div class="col-lg-9">
-                <h2 style="font-size:45px;"class="blur-text">SHARAN SS</h2>
-                <p style="font-size:25px;" class="blur-text">
-                  <span class="typed" id="typed" data-typed-items=" Software Engineer, Full-stack Developer"></span>
+                <h2 style="font-size:45px;color:white;"class="blur-text">Santhiya S</h2>
+                <p style="font-size:25px;color:white;" class="blur-text">
+                    I'm <span class="typed" id="typed" data-typed-items=" Software Engineer, Full-Stack Developer,BackEnd Developer,Java Developer"></span>
                   </p>
                   <div class="social-links">
-                    <a style="color:black;font-size:30px;" href="" target="_blank" class="blur-text"><i class="bi bi-github"></i></a>
-                    <a  style="color:black ;font-size:30px;" href="https://www.linkedin.com/in/sharanshiva" target="_blank" class="blur-text"><i
+                    <a style="color:white;font-size:30px;" href="" target="_blank" class="blur-text"><i class="bi bi-github"></i></a>
+                    <a  style="color:white ;font-size:30px;" href="https://www.linkedin.com/in/santhiya-sj-s-10b40b221" target="_blank" class="blur-text"><i
                         class="bi bi-linkedin"></i></a>
                   </div>
               </div>
@@ -62,54 +356,211 @@
 <!--  About Section -->
 
     <section class="about" id="about">
+      
         <div class="title reveal">
-            <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000">About me</h2>
+          <script src="https://unpkg.com/@motionone/dom"></script>
+          <script>
+            const { animate, path, stagger } = window.Motion;
+          
+            window.onload = function() {
+              // Animate car along the path
+              animate(".car", {
+                offsetDistance: ["0%", "100%"]
+              }, {
+                duration: 5,
+                easing: "linear",
+                repeat: Infinity,
+                offsetPath: path(".circuit")
+              });
+          
+              // Optional: animate drawing the path
+              animate(".circuit", {
+                strokeDasharray: 600,
+                strokeDashoffset: [600, 0]
+              }, {
+                duration: 2
+              });
+            };
+          </script>
+                  
+            <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000"><div class="medium row">
+              <div class="square"></div>
+            </div>About me</h2>
         </div>
         <div class="content">
             <div class="column col-left reveal">
                 <div class="img-card" data-aos="fade-right" data-aos-duration="2000" data-aos-delay="200">
-                    <img src="Image/pht.jpg" alt="">
+                    <img src="Image/santhiya.jpeg" alt="">
                 </div>
             </div>
             <div class="column col-right reveal">
                 <h2 class="content-title" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    Hey There! I am <span class="highlight">sharan</span>
+                    Hey There! I am <span class="highlight">Santhiya</span>
                   </h2>
-                 
-                  <p class="paragraph-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="400">
-                    As a <span class="highlight">full stack developer</span>, I am passionate about creating robust and user-friendly web applications.
-                    My expertise lies in both <span class="highlight">front-end</span> and <span class="highlight">back-end</span> development, allowing me to develop end-to-end solutions that meet business requirements.
-                  </p>
-                 
-                  <p class="paragraph-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="400">
-                    I'm a passionate <span class="highlight">Developer</span> who loves to create end-to-end applications and make them global on the internet.
-                  </p>
-                 
-                  <p class="paragraph-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="400">
-                    I have a strong knowledge of <span class="highlight">Data Structures and Algorithms</span>.
-                    Solved <span class="highlight">100+ coding problems</span> on <span class="highlight">LeetCode</span>, <span class="highlight">GFG</span>, and <span class="highlight">Coding Ninjas</span>.
-                  </p>
-                 
-                  <p class="paragraph-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="400">
-                    On the front-end, I work with <span class="highlight">HTML</span>, <span class="highlight">CSS</span>, <span class="highlight">JavaScript</span>,
-                    and frameworks like <span class="highlight">Bootstrap</span>. I design smooth, user-friendly UIs.
-                  </p>
-                 
-                  <p class="paragraph-text " data-aos="flip-up" data-aos-duration="1000" data-aos-delay="400">
-                    On the back-end, I use <span class="highlight">Java</span>, <span class="highlight">C#</span>, <span class="highlight">Python</span>, <span class="highlight">PHP</span>,
-                    and frameworks like <span class="highlight">Spring Boot</span>, <span class="highlight">CodeIgniter</span>, <span class="highlight">Laravel</span>.
-                    I'm experienced in <span class="highlight">RESTful APIs</span>, <span class="highlight">CI/CD</span>, <span class="highlight">GitHub</span>, and cloud platforms like <span class="highlight">Azure</span>.  </p>
-                    <p class="paragraph-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="400">
-                        I work with databases such as <span class="highlight">PostgreSQL</span> and <span class="highlight">MySQL</span> for designing and managing data efficiently.
-                  </p>
-                 
-                 
-                  <a href="#" class="btn" data-aos="zoom-out-left" data-aos-duration="1000" data-aos-delay="600">See more</a>
-                 
+                  
+                 <p class="paragraph-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="400">
+  I am a dedicated <span class="highlight">Java Backend Developer</span> with a strong focus on building scalable, robust, and production-ready systems using 
+  <span class="highlight">Spring Boot</span> and <span class="highlight">Microservices</span>. I love creating end-to-end solutions that deliver real business value.
+</p>
+
+<p class="paragraph-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="400">
+  I have solid foundations in <span class="highlight">Data Structures & Algorithms</span> and have solved 
+  <span class="highlight">100+ coding challenges</span> across platforms like <span class="highlight">LeetCode</span>, <span class="highlight">GFG</span>, and <span class="highlight">Coding Ninjas</span>.
+</p>
+
+<p class="paragraph-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="400">
+  My expertise includes designing high-performance <span class="highlight">REST APIs</span>, building secure authentication systems using 
+  <span class="highlight">JWT</span> and <span class="highlight">Spring Security</span>, and implementing clean, modular backend architectures.
+</p>
+
+<p class="paragraph-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="400">
+  I work extensively with <span class="highlight">MySQL</span> and <span class="highlight">PostgreSQL</span> for efficient data modeling, query optimization, and service-level communication.
+</p>
+
+<p class="paragraph-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="400">
+  On the front-end side, I use <span class="highlight">HTML</span>, <span class="highlight">CSS</span>, <span class="highlight">JavaScript</span>, and 
+  <span class="highlight">Bootstrap</span> to create clean, responsive, and user-friendly interfaces whenever required.
+</p>
+
+<p class="paragraph-text" data-aos="flip-up" data-aos-duration="1000" data-aos-delay="400">
+  I also have hands-on experience with <span class="highlight">CI/CD</span>, <span class="highlight">GitHub Actions</span>, and cloud deployment workflows on 
+  <span class="highlight">Azure</span>, enabling smooth integration and delivery pipelines.
+</p>
+
+<!-- <a href="#" class="btn" data-aos="zoom-out-left" data-aos-duration="1000" data-aos-delay="600">
+  See more
+</a> -->
+
+                  
+                  
+                
             </div>
         </div>
-    </section>
 
+      
+
+    </section>
+   <!-- for resume section -->
+    <section class="skills" id="skills">
+       <div class="title">
+        <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000">Resume</h2>
+    </div>
+   
+<div id="resumeSection" class="curved-container">
+
+  <!-- LEFT COLUMN -->
+  <div class="curved-column left-col">
+
+    <div class="curved-card"data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+       <div class="connector"></div>
+      <div class="dot"></div>
+      <h3>Summary</h3>
+      <p>Backend Developer with <strong>3+ years</strong> in Java, Spring Boot, Microservices & scalable backend systems.</p>
+    </div>
+
+    <div class="curved-card"data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+       <div class="connector"></div>
+      <div class="dot"></div>
+      <h3>Education</h3>
+      <ul>
+        <li>M.Sc Physics – Mother Terasa College</li>
+        <li>B.Sc Physics – M.I.E.T College</li>
+      </ul>
+    </div>
+
+    <div class="curved-card"data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+       <div class="connector"></div>
+      <div class="dot"></div>
+      <h3>Projects</h3>
+      <ul>
+        <li>Shopping App</li>
+        <li>Expensive App</li>
+        <li>Umpire App</li>
+      </ul>
+    </div>
+
+    <div class="curved-card"data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+       <div class="connector"></div>
+      <div class="dot"></div>
+      <h3>Achievements</h3>
+      <ul>
+        <li>10k+ Active App Users</li>
+        <li>Reduced survey work by 90%</li>
+      </ul>
+    </div>
+
+    <div class="curved-card"data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+       <div class="connector"></div>
+      <div class="dot"></div>
+      <h3>Courses</h3>
+      <ul>
+        <li>Java Spring Framework 6 – Udemy</li>
+        <li>DSA – LeetCode & GFG</li>
+      </ul>
+    </div>
+
+  </div>
+
+
+  <!-- CURVED SVG LINE -->
+  <svg class="curved-svg" width="200" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <path id="curvePath"
+      d="M 150 0 
+         C 30 200, 170 350, 50 550
+         C -20 700, 200 850, 80 1000"
+      stroke="#ffca7a" stroke-width="3" fill="transparent"/>
+  </svg>
+
+
+  <!-- RIGHT COLUMN -->
+  <div class="curved-column right-col">
+
+    <div class="curved-card"data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+       <div class="connector"></div>
+      <div class="dot"></div>
+      <h3>Experience</h3>
+      <ul>
+        <li>Spring Boot Microservices Development</li>
+        <li>JWT + Spring Security Authentication</li>
+        <li>Optimised JPA/MySQL Queries (30–50% faster)</li>
+        <li>REST APIs for workout, tasks & progress</li>
+        <li>QGIS-based Survey Backend Automation</li>
+      </ul>
+    </div>
+
+    <div class="curved-card"data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+       <div class="connector"></div>
+      <div class="dot"></div>
+      <h3>Skills</h3>
+      <ul>
+        <li><strong>Languages:</strong> Java, Python, PHP, JS</li>
+        <li><strong>Frameworks:</strong> Spring Boot, Laravel</li>
+        <li><strong>Databases:</strong> MySQL, PostgreSQL</li>
+        <li><strong>Cloud:</strong> Azure, AWS</li>
+        <li><strong>DevOps:</strong> Docker, Kubernetes</li>
+        <li><strong>Messaging:</strong> Kafka</li>
+      </ul>
+    </div>
+
+    <div class="curved-card"data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+       <div class="connector"></div>
+      <div class="dot"></div>
+      <h3>Major  Projects</h3>
+      <ul>
+        <li>Pilates Training Platform</li>
+        <li>Survey Automation Engine</li>
+        <li>File Processing Module</li>
+        <li>Gantt Chart</li>
+        <li>Field Data Collection </li>
+        <li>E-Commerce Website</li>
+        <li>Finance Management Website</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+</section>  
 <!-- Skill Section -->
 
 <section class="skills" id="skills">
@@ -118,105 +569,89 @@
     </div>
     <div class="content">
         <div class="column col-left">
-            <h2 class="content-title" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">💻Skills Highlights</h2>
+            <h2 class="content-title" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">💻Work Highlights</h2>
             <div class="experience-block" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
                 <h3> <strong></strong></h3>
                 <ul class="experience-list">
-                   
+                    <li  data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><strong><i style="margin:5px;" class="fa-brands fa-java"></i></strong> Java Web Development:</strong> Built scalable apps with Java, Spring Boot, Hibernate, REST APIs, Thymeleaf/JSP, and Spring Security.</li>
                     <li  data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><strong><i class="fas fa-gamepad" style="margin:5px;"></i>Game Development:</strong> Created 2D/3D Unity (C#) games with polished UI, 1k+ downloads on Google Play.</li>
                     <li  data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><strong><i class="fas fa-mobile-alt" style="margin:5px;"></i>Android Umpire Tool:</strong> Developed a live badminton scoring app in Unity with tracking and decision support.</li>
                     <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><strong><i class="fas fa-globe" style="margin:5px;"></i>Financial Web App:</strong> Responsive UI using HTML, CSS, JS, Bootstrap + fast CodeIgniter 3 & MySQL backend.</li>
                     <li data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><strong><i class="fas fa-tools" style="margin:5px;"></i>Admin Panels:</strong> Delivered data-driven dashboards with JSON, MySQL & CodeIgniter for smooth data visualization.</li>
-                    <li  data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><strong><i style="margin:5px;" class="fa-brands fa-java"></i></strong> Java Web Development:</strong> Built scalable apps with Java, Spring Boot, Hibernate, REST APIs, Thymeleaf/JSP, and Spring Security.</li>
                 </ul>
             </div>
-           
-         
-           <a href="Image\santhiya software developer (2) (1).pdf" class="btn" onclick="viewAndDownloadCV(event)" data-aos="zoom-out-left" data-aos-duration="1000" data-aos-delay="600">
-            <i class="fas fa-download"></i> Download CV
-          </a>
-
-          <!-- <a href="Image\santhiya software developer (2).docx" class="btn" onclick="viewAndDownloadCV(event)" data-aos="zoom-out-left" data-aos-duration="1000" data-aos-delay="600">
-            <i class="fas fa-download"></i> Download CV
-          </a> -->
-          </div>
+            <a href="assets/Santhiya_CV.pdf" class="btn" download data-aos="zoom-out-left" data-aos-duration="1000" data-aos-delay="600">
+                <i class="fas fa-download"></i> Download CV
+              </a>
+        </div>
 
         <div class="column col-left">
             <!-- Skill Bars with icons, percentage, and projects count -->
-
-              <div class="bar enhanced-bar"data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
+            <div class="bar enhanced-bar"data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
                 <div class="info" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
                     <!-- <img src="icons/java.png" alt="Java" class="skill-icon"> -->
-                    <i style="margin:5px;" class="fa-brands fa-laravel"></i>
-                    <span class="skill-name">Laravel</span>
-                    <span class="skill-meta">90% </span>
+                    <i style="margin:5px;" class="fa-brands fa-java"></i>
+                    <span class="skill-name">Java</span>
+                    <span class="skill-meta">80% | 4 Projects</span>
                 </div>
                 <div class="line fill-java"></div>
             </div>
+        
+            <div class="bar enhanced-bar"data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
+                <div class="info" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
+                    <!-- <img src="icons/html.png" alt="HTML" class="skill-icon"> -->
+                    <i style="margin:5px;" class="fa-brands fa-html5"></i>
+                   
+                    <span class="skill-name">HTML</span>
+                    <span class="skill-meta">95% | 25 Projects</span>
+                </div>
+                <div class="line fill-html"></div>
+            </div>
+        
+            <div class="bar enhanced-bar"data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
+                <div class="info" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
+                    <i style="margin:5px;" class="fa-brands fa-css3-alt"></i>
+                    
+                    <!-- <img src="icons/css.png" alt="CSS" class="skill-icon"> -->
+                    <span class="skill-name">CSS</span>
+                    <span class="skill-meta">90% | 25 Projects</span>
+                </div>
+                <div class="line fill-css"></div>
+            </div>
+        
+            <div class="bar enhanced-bar"data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
+                <div class="info" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
+                    <!-- <img src="icons/js.png" alt="JavaScript" class="skill-icon"> -->
+                   
+                    <i style="margin:5px;" class="fa-brands fa-js"></i>
+                    
+                    <span class="skill-name">JavaScript</span>
+                    <span class="skill-meta">80% | 20 Projects</span>
+                </div>
+                <div class="line fill-js"></div>
+            </div>
+        
+            <!-- <div class="bar enhanced-bar">
+                <div class="info">
+                    <img src="icons/python.png" alt="Python" class="skill-icon">
+                    <span class="skill-name">Python</span>
+                    <span class="skill-meta">45% | 6 Projects</span>
+                </div>
+                <div class="line fill-python"></div>
+            </div>
+         -->
             <div class="bar enhanced-bar"data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
                 <div class="info"data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
                     <!-- <img src="icons/php.png" alt="PHP" class="skill-icon"> -->
                     <i style="margin:5px;" class="fa-brands fa-php"></i>
-                   
+                    
                     <span class="skill-name">PHP</span>
-                    <span class="skill-meta">75%</span>
+                    <span class="skill-meta">75% | 12 Projects</span>
                 </div>
                 <div class="line fill-php"></div>
             </div>
-            <div class="bar enhanced-bar"data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
-              <div class="info" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
-                  <!-- <img src="icons/js.png" alt="JavaScript" class="skill-icon"> -->
-               
-                  <i style="margin:5px;" class="fa-brands fa-unity"></i>
-                 
-                  <span class="skill-name">UNITY</span>
-                  <span class="skill-meta">80%</span>
-              </div>
-            <div class="line fill-js"></div>
-          </div>
-            <div class="bar enhanced-bar"data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
-              <div class="info" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
-                  <!-- <img src="icons/java.png" alt="Java" class="skill-icon"> -->
-                  <i style="margin:5px;" class="fa-brands fa-java"></i>
-                  <span class="skill-name">Java</span>
-                  <span class="skill-meta">50% </span>
-              </div>
-              <div class="line fill-java"></div>
-          </div>
-          <div class="bar enhanced-bar"data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
-            <div class="info" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
-                <!-- <img src="icons/js.png" alt="JavaScript" class="skill-icon"> -->
-               
-                <i style="margin:5px;" class="fa-brands fa-js"></i>
-               
-                <span class="skill-name">JavaScript</span>
-                <span class="skill-meta">50% </span>
-            </div>
-            <div class="line fill-js"></div>
         </div>
-        <div class="bar enhanced-bar"data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
-          <div class="info" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
-              <!-- <img src="icons/html.png" alt="HTML" class="skill-icon"> -->
-              <i style="margin:5px;" class="fa-brands fa-html5"></i>
-             
-              <span class="skill-name">HTML</span>
-              <span class="skill-meta">95%</span>
-          </div>
-          <div class="line fill-html"></div>
-      </div>
- 
-      <div class="bar enhanced-bar"data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
-          <div class="info" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="400">
-              <i style="margin:5px;" class="fa-brands fa-css3-alt"></i>
-             
-              <!-- <img src="icons/css.png" alt="CSS" class="skill-icon"> -->
-              <span class="skill-name">CSS</span>
-              <span class="skill-meta">90%</span>
-          </div>
-          <div class="line fill-css"></div>
-      </div>
-        </div>
-       
+        
     </div>
 </section>
 
@@ -232,6 +667,21 @@
 
         </div>
         <div class="content">
+            <div class="card" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">
+                <div class="service-icon">
+                    <!-- <i class="fas fa-palette"></i> -->
+                    <i style="margin:5px;" class="fa-brands fa-java"></i>
+                </div>
+                <div class="info">
+                    <h3>Java + SpringBoot Expertise</h3>
+                    <p>I build robust backends using Java and Spring Boot for secure and scalable web applications.
+                        I create RESTful APIs to enable smooth communication between front-end and back-end.
+                        With Hibernate and JPA, I optimize database performance using MySQL and PostgreSQL.
+                        My focus is on clean architecture, fast response times, and secure data handling.
+                        
+                         </p>
+                </div>
+            </div>
             <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
                 <div class="service-icon">
                     <!-- <i class="fas fa-object-group"></i>
@@ -240,7 +690,7 @@
                 </div>
                 <div class="info">
                     <h3>BackEnd Development</h3>
-                    <p>I specialize in backend development using PHP (Laravel),Java (Spring Boot).
+                    <p>I specialize in backend development using Java (Spring Boot), PHP (CodeIgniter,Laravel) and C#.
                         I build secure, scalable APIs and handle database integration with MySQL and PostgreSQL.
                         My focus is on clean code, performance, and reliable data communication.
                         I ensure strong backend support for smooth web and mobile experiences. </p>
@@ -249,27 +699,16 @@
             <div class="card" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
                 <div class="service-icon">
                     <!-- <i class="fas fa-file-code"></i> -->
-                    <i class="fa-solid fa-laptop-code"></i>
+                    <i class="fa-solid fa-code"></i>
                 </div>
                 <div class="info">
-                    <h3>FrontEnd Development</h3>
+                    <h3>Web Development</h3>
                    <p> I specialize in building dynamic, user-friendly web applications using modern technologies like HTML, CSS, JavaScript, jQuery, and AJAX. With expertise in PHP frameworks such as CodeIgniter and Laravel, I create clean front-end interfaces and smooth, efficient back-end systems—bringing complete digital solutions to life.
 
                    </p>
-               
+                
                 </div>
             </div>
-            <div class="card" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">
-              <div class="service-icon">
-                  <!-- <i class="fas fa-palette"></i> -->
-                  <i style="margin:5px;" class="fa-brands fa-unity"></i>
-              </div>
-              <div class="info">
-                  <h3> Unity</h3>
-                  <p>I’ve built a few games using Unity, experimenting with different mechanics and styles to bring my ideas to life. It’s been a great way to apply my creativity and sharpenmy skills in gameplay mechanics, UI/UX design, and C# scripting and designing fun, interactive experiences.Each one has been a chance to explore storytelling, design, and coding in an interactive space.
-                       </p>
-              </div>
-          </div>
         </div>
     </section>
 
@@ -280,10 +719,11 @@
         </div>
         <div class="content">
             <div class="card" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
-                <div class="card-img">
+                <div class="card-img"  onclick="redirectToDemo()">
+                  >
                     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-                 
-                    <lottie-player
+                  
+                    <lottie-player 
                       src="https://assets10.lottiefiles.com/packages/lf20_w51pcehl.json"  
                       background="transparent"  
                       speed="1"  
@@ -294,7 +734,7 @@
                     <h3 class="text-center">E-Commerce Website</h3>
 
                   </div>
-                 
+                  
             </div>
             <div class="card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
               <div class="card-img">
@@ -306,16 +746,22 @@
                 <h3>Admin Panel</h3>
               </div>
             </div>
-            <div class="card" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-              <div class="card-img">
-                <video id="dashboardVideo" autoplay loop muted playsinline width="100%">
-                 
+            <div class="card" data-aos="fade-left" onclick="showFigmaDemo()"data-aos-duration="1000" data-aos-delay="200">
+              <div class="card-img" >
+                <video id="dashboardVideo" autoplay loop muted playsinline>
                   <source src="animations/ecommerce.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
+                <div class="tooltip">Click to view Details</div>
               </div>
-             
-             
+              
+              <div id="figmaContainer" class="figma-frame">
+                <iframe width="800" height="450"
+                  src="https://embed.figma.com/proto/nzD3st3eMBTm6uawlETGh9/Ecommerce-Website-Design--Community-?node-id=22-476&scaling=min-zoom&content-scaling=fixed&page-id=22%3A474&embed-host=share"
+                  allowfullscreen>
+                </iframe>
+              </div>
+              
             </div>
             <div class="card" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400">
               <video id="dashboardVideo" autoplay loop muted playsinline width="100% "height="100%">
@@ -350,6 +796,7 @@
           <div class="row">
             <div class="card reveal address-card">
                 <div class="contact-icon">
+                  
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
                 <div class="info">
@@ -368,14 +815,16 @@
                   ></iframe>
                 </div>
               </div>
-             
+            
             <div class="card reveal">
+            
               <div class="contact-icon">
                 <i class="fas fa-phone"></i>
               </div>
+                
               <div class="info">
                 <h3>Phone</h3>
-                <span>+91 6383260073</span>
+                <span>+91 9003442702</span>
               </div>
             </div>
             <div class="card reveal">
@@ -384,7 +833,7 @@
               </div>
               <div class="info">
                 <h3>Email Address</h3>
-                <span>sharanshiva2002@email.com</span>
+                <span>sandysivasj@email.com</span>
               </div>
             </div>
             <div class="card reveal">
@@ -401,31 +850,33 @@
             <div class="contact-form reveal" style="width:80%;">
                 <h3>Send Message</h3>
                 <form id="contact-form">
-                  <div class="input-box">
-                      <input type="text" id="name" placeholder="Name" required>
-                  </div>
-                  <div class="input-box">
-                      <input type="email" id="email" placeholder="Email" required>
-                  </div>
-                  <div class="input-box">
-                      <textarea id="message" rows="5" placeholder="Message" required></textarea>
-                  </div>
-                  <div class="input-box">
-                      <input type="submit" class="send-btn" value="Send">
-                  </div>
-              </form>
+                    <div class="input-box">
+                        <input type="text" id="name" placeholder="Name" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-box">
+                        <textarea id="message" rows="5" placeholder="Message" required></textarea>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="send-btn" value="Send">
+                    </div>
+                </form>
             </div>
           </div>
         </div>
       </section>
- 
+  
       <footer class="footer">
-        <span class="footer-title"> SHARAN SS</span>
+        <span class="footer-title"style="font-size:30px;"> Santhiya S</span>
         <div class="social-links">
             <a style="color:rgb(227, 219, 219);font-size:30px;" href="" target="_blank" class="blur-text"><i class="bi bi-github"></i></a>
-            <a  style="color:rgb(225, 217, 217) ;font-size:30px;" href="https://www.linkedin.com/in/sharanshiva" target="_blank" class="blur-text"><i
+            <a  style="color:rgb(225, 217, 217) ;font-size:30px;" href="https://www.linkedin.com/in/santhiya-sj-s-10b40b221" target="_blank" class="blur-text"><i
                 class="bi bi-linkedin"></i></a>
+                 
           </div>
+          <span class="footer-title"style="font-size:15px;"> Thank You</span>
 
         <!-- <p>Copyright @2021 <a href="#">Coding sandy</a>. All Rights Reserved.</p> -->
       </footer>
@@ -434,6 +885,17 @@
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+      const toggleBtn = document.getElementById('toggle-btn');
+      const navbar = document.getElementById('navbar');
+    
+      toggleBtn.addEventListener('click', () => {
+        navbar.classList.toggle('show');
+      });
+    </script>
+    
+    
+  
+    <script>
       AOS.init({offset:0});
     </script>
     <script>
@@ -441,6 +903,14 @@
         window.addEventListener("scroll", function(){
     scrollBtn.classList.toggle("active", window.scrollY > 500);
 });
+
+//javascript for scroll back to top on click scroll-to-top button
+
+// document.querySelector(".scrollToTop-btn").addEventListener("click", () => {
+//   document.body.scrollTop = 0;
+//   document.documentElement.scrollTop = 0;
+// });
+
         const menuBtn = document.querySelector(".menu-btn");
         const navigation = document.querySelector(".navigation");
         const navigationItems = document.querySelector(".navigation a");
@@ -462,102 +932,41 @@
                 navigation.classList.remove("active")
             })
         })
-<script>
-  function viewAndDownloadCV(event) {
-  event.preventDefault();
-
-  const cvUrl = 'Image\santhiya software developer (2) (1).pdf';
-
-  // Open in a new window/tab
-  const win = window.open();
-  win.document.write(`<iframe src="${cvUrl}" style="border:none;width:100vw;height:100vh;"></iframe>`);
-
-  // Optional: trigger download
-  const link = document.createElement('a');
-  link.href = cvUrl;
-  link.download = 'Santhiya_CV.pdf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-</script>
         </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!-- ✅ New EmailJS SDK (supported) -->
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-<!-- ✅ SweetAlert2 for nice alerts -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form from refreshing the page
 
-<script type="text/javascript">
-  window.onload = function () {
-    // Initialize EmailJS with your public key
-    emailjs.init("KCTK2TiaeXSLqjWjZ"); // ✅ Replace with your actual public key
-  };
+        emailjs.init("tjUnnT0oO1cTuM4sg"); // Replace with your EmailJS Public Key
 
-  document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("contact-form").addEventListener("submit", function (event) {
-      event.preventDefault();
+        var templateParams = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value,
+        };
 
-      // Get values
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const message = document.getElementById("message").value.trim();
-
-      // Prepare parameters
-      const autoReplyParams = {
-        user_name: name,
-        user_email: email, // 👈 Make sure your template uses this
-      };
-
-      const mainMessageParams = {
-        name: name,
-        email: email,
-        message: message
-      };
-
-      // Loading state
-      Swal.fire({
-        title: 'Sending...',
-        text: 'Please wait while we send your message.',
-        didOpen: () => {
-          Swal.showLoading();
-        },
-        allowOutsideClick: false,
-        allowEscapeKey: false
-      });
-
-      // Step 1: Send auto-reply to user
-      emailjs.send("service_bpmjvds", "template_5rc3pgl", autoReplyParams)
-        .then(() => {
-          // Step 2: Send message to yourself
-          return emailjs.send("service_bpmjvds", "template_adji2sn", mainMessageParams);
-        })
-        .then(() => {
-          Swal.fire({
+        emailjs.send("service_c35zx25", "template_q2zhv5r", templateParams)
+    .then(function(response) {
+        Swal.fire({
             icon: 'success',
             title: 'Message Sent!',
             text: 'Your message has been sent successfully.',
-          });
-          document.getElementById("contact-form").reset();
-        })
-        .catch((error) => {
-          console.error('Sending failed:', error);
-          Swal.fire({
-            icon: 'error',
-            title: 'Failed to Send',
-            text: `Error: ${error.text || 'Something went wrong. Please try again.'}`,
-          });
+            confirmButtonColor: '#3085d6'
         });
+        document.getElementById("contact-form").reset(); // Clear form after sending
+    }, function(error) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Failed to send message. Try again later.',
+            confirmButtonColor: '#d33'
+        });
+        console.log("Error:", error);
     });
-  });
+    });
 </script>
-
-
-
-
-
-
 <script>
     document.querySelectorAll('.card.reveal, .contact-form.reveal').forEach(el => {
       el.addEventListener('touchstart', () => {
@@ -577,23 +986,23 @@
     let isDeleting = false;
     const speed = 150;      // Typing speed
     const pauseTime = 2000; // Pause after full word
- 
+  
     function type() {
       const element = document.getElementById('typing-text');
- 
+  
       if (count === texts.length) count = 0;
       currentText = texts[count];
- 
+  
       if (isDeleting) {
         letter = currentText.slice(0, --index);
       } else {
         letter = currentText.slice(0, ++index);
       }
- 
+  
       element.textContent = letter;
- 
+  
       let typeSpeed = isDeleting ? 80 : speed;
- 
+  
       if (!isDeleting && letter.length === currentText.length) {
         typeSpeed = pauseTime;
         isDeleting = true;
@@ -602,10 +1011,10 @@
         count++;
         typeSpeed = 500; // short pause before typing next word
       }
- 
+  
       setTimeout(type, typeSpeed);
     }
- 
+  
     document.addEventListener("DOMContentLoaded", function () {
       setTimeout(type, 500); // start delay
     });
@@ -615,7 +1024,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       const typedElement = document.getElementById('typed');
       const items = typedElement.getAttribute('data-typed-items').split(',');
- 
+  
       new Typed('#typed', {
         strings: items,
         typeSpeed: 100,
@@ -635,6 +1044,116 @@
   </script>
     <script src="typed.js/typed.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    
+      <script>
+  function showFigmaDemo() {
+    window.location.href = "figma-demo.html";
+  }
+</script>
+<script>
+  
+document.querySelectorAll('#navmenu a').forEach(navmenu => {
+  navmenu.addEventListener('click', () => {
+    if (document.querySelector('.header-show')) {
+      headerToggle();
+    }
+  });
 
+});
+
+/**
+ * Toggle mobile nav dropdowns
+ */
+document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
+  navmenu.addEventListener('click', function (e) {
+    e.preventDefault();
+    this.parentNode.classList.toggle('active');
+    this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+    e.stopImmediatePropagation();
+  });
+});
+let navmenulinks = document.querySelectorAll('.navmenu a');
+
+function navmenuScrollspy() {
+  navmenulinks.forEach(navmenulink => {
+    if (!navmenulink.hash) return;
+    let section = document.querySelector(navmenulink.hash);
+    if (!section) return;
+    let position = window.scrollY + 200;
+    if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+      document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
+      navmenulink.classList.add('active');
+    } else {
+      navmenulink.classList.remove('active');
+    }
+  })
+}
+window.addEventListener('load', navmenuScrollspy);
+document.addEventListener('scroll', navmenuScrollspy);
+
+const headerToggleBtn = document.querySelector('.header-toggle');
+
+function headerToggle() {
+  document.querySelector('#header').classList.toggle('header-show');
+  headerToggleBtn.classList.toggle('bi-list');
+  headerToggleBtn.classList.toggle('bi-x');
+}
+headerToggleBtn.addEventListener('click', headerToggle);
+
+/**
+ * Hide mobile nav on same-page/hash links
+ */
+document.querySelectorAll('#navmenu a').forEach(navmenu => {
+  navmenu.addEventListener('click', () => {
+    if (document.querySelector('.header-show')) {
+      headerToggle();
+    }
+  });
+  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
+    navmenu.addEventListener('click', function (e) {
+      e.preventDefault();
+      this.parentNode.classList.toggle('active');
+      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
+      e.stopImmediatePropagation();
+    });
+  });
+
+});
+
+
+    </script>
+   <script>
+   const toggleBtns = document.getElementById('toggleBtn');
+const sidebar = document.getElementById('navbar');
+const toggleIcon = document.getElementById('toggleIcon');
+
+toggleBtns.addEventListener('click', () => {
+  // Toggle the sidebar's visibility
+  if (sidebar.style.left === '0px') {
+    sidebar.style.left = '-250px';  // Hide the sidebar
+    toggleIcon.classList.remove('bi-x');  // Remove the 'X' (close) icon
+    toggleIcon.classList.add('bi-list');  // Add the hamburger (open) icon
+  } else {
+    sidebar.style.left = '0px';  // Show the sidebar
+    toggleIcon.classList.remove('bi-list');  // Remove the hamburger icon
+    toggleIcon.classList.add('bi-x');  // Add the 'X' (close) icon
+  }
+});
+
+  </script>
+  <script>
+  const resumeSection = document.getElementById("resumeSection");
+  const btn = document.querySelector(".btn");
+
+  btn.addEventListener("click", function(e) {
+    e.preventDefault();
+    resumeSection.style.display = resumeSection.style.display === "block" ? "none" : "block";
+    
+    btn.textContent = resumeSection.style.display === "block" ? "Hide" : "See more";
+  });
+</script>
+
+  
+    
 </body>
 </html>
